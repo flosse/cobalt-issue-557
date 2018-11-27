@@ -8,6 +8,24 @@
     <div>
       <h2>{{ page.title }}</h2>
       {{ page.content }}
+      <h3>Other posts</h3>
+      <div>
+      {% for post in collections.posts.pages %}
+        <section class="12u 24u(narrower)">
+          <div class="box post">
+            <a class="image left" href={{ post.permalink }}>
+              <img src={{post.data.image}}></img>
+            </a>
+            <div class="inner">
+              <a href={{ post.permalink }}><h3>{{ post.title }}</h3></a>
+              <p class="date">{{ post.published_date | date: "%d. %m. %Y" }}</p>
+              <p>{{ post.excerpt }}<a href={{ post.permalink }}>weiter lesen ...</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      {% endfor %}
+      </div>
     </div>
   </body>
 </html>
